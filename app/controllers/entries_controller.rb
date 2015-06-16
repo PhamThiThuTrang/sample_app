@@ -13,11 +13,18 @@ class EntriesController < ApplicationController
     end
   end
 
+  def show
+    @entry = Entry.find(params[:id])
+    @feed1_items = @entry.comments.paginate(page: params[:page])
+    if logged_in?
+      @comment = current_user.comments.build
+    end
+  end
+
   def destroy
     @entry.destroy
     flash[:success] = "Entry deleted"
     redirect_to request.referrer || root_url
-
   end
 
   private

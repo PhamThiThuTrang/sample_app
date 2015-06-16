@@ -1,0 +1,6 @@
+<% if @feed1_items.any? %>
+  <ol class="comments">
+    <%= render @feed1_items %>
+  </ol>
+  <%= will_paginate @feed1_items %>
+<% end %>

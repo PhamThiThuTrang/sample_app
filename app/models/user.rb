@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :entries, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -27,6 +28,10 @@ class User < ActiveRecord::Base
 
   def feed
     Entry.where("user_id = ?", id)
+  end
+
+  def feed1
+    Comment.where("user_id = ?", id)
   end
 
   # Follows a user.

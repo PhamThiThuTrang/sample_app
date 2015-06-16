@@ -1,0 +1,15 @@
+  <div class="row">
+    <aside class="col-md-4">      
+    <% if logged_in? %>
+      <section class="micropost_form">
+       <%= render 'shared/comment_form' %>
+    </section>  
+    <% end %>
+    </aside>
+    <div class="col-md-8">
+      <h3>Comments Feed</h3>
+      <ol class="comments">
+        <%= render 'shared/feed1' %>
+      </ol>
+    </div>
+  </div>

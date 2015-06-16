@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @entries = @user.entries.paginate(page: params[:page])
+    @entry = @user.entries.find(params[:id])
+    @comments = @entry.comments.paginate(page: params[:page])
   end
 
   def new
